@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+**/.vs/
+**/node_modules/
+**/dist/
+*.tsbuildinfo
+Ecommerce.Main/vite.config.js
+Ecommerce.Main/vite.config.d.ts
+*.user
+*.suo
+.DS_Store
+**/wwwroot/lib/
+*.db
+*.db-shm
+*.db-wal

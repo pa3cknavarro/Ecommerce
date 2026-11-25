@@ -1,0 +1,46 @@
+<!--
+  SDK-style project. Microsoft.NET.Sdk.Web pulls in the ASP.NET Core shared framework,
+  so the API can host Kestrel, middleware, and minimal APIs without extra framework references.
+-->
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!-- Groups MSBuild properties that apply to every build of this project. -->
+  <PropertyGroup>
+    <!-- Compiles against .NET 8. The SDK must be able to resolve the net8.0 targeting pack. -->
+    <TargetFramework>net11.0</TargetFramework>
+    <!-- Turns on nullable reference types. The compiler warns when a non-nullable reference might be null. -->
+    <Nullable>enable</Nullable>
+    <!-- Implicitly imports common namespaces such as System, System.Linq, and the ASP.NET Core hosting namespaces. -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>26f6a8cd-302d-403e-9aea-eea61d63b342</UserSecretsId>
+  </PropertyGroup>
+
+  <!-- Groups NuGet packages restored before compile. -->
+  <ItemGroup>
+    <!-- Adds URL-based API versioning for minimal APIs, used to map /api/v1 route groups. -->
+    <PackageReference Include="Asp.Versioning.Http" Version="10.2.3" />
+    <!-- Adds the API explorer integration so Swagger can list each API version. -->
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="10.2.1" />
+    <!-- Carter scans the assembly for ICarterModule implementations and maps their routes. -->
+    <PackageReference Include="Carter" Version="11.0.0" />
+    <!-- Supplies OpenAPI document generation types that ship with ASP.NET Core 8. -->
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0" />
+    <!-- Provides PostgreSQL persistence for the API's Entity Framework Core context. -->
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
+    <!-- Provides EF tooling support for generating and applying schema migrations. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <!-- Aligns EF design-time Roslyn dependencies with Carter's analyzer version. -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="5.12.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <!-- Swashbuckle generates the Swagger JSON and hosts the Swagger UI middleware. -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="11.0.1" />
+    <!-- Provides secure password hashing for user credentials. -->
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="11.0.0" />
+  </ItemGroup>
+
+<!-- Closes the project file. MSBuild reads nothing further from this file. -->
+</Project>
